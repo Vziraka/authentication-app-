@@ -1,5 +1,5 @@
 -- Enable UUID generation
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp"; -- used as a saftey net if the uuid is not generated
 
 -- Users table
 CREATE TABLE users (

@@ -1,15 +1,21 @@
+# Python classes that mirror your SQL tables. 
+# SQLAlchemy uses these classes so you can talk to the database in Python instead of writing raw SQL
+
+
 from sqlalchemy import Column, String, Boolean, DateTime, Integer, ForeignKey # data types used to define table columns in Python so SQLAlchemy can map them to PostgreSQL
 
-from sqlalchemy.dialects.postgresql import UUID 
+from sqlalchemy.dialects.postgresql import UUID  # imports the UUID data type from postgresql 
 from database import Base # imports base class from database.py
-import uuid 
+import uuid # used create UUID instructions for the database 
 from datetime import datetime #imports the datetime module to use the current date and time 
 
+#types and tools that let you describe your table's structure in Python, 
+#so SQLAlchemy knows how to map your Python classes to the tables that already exist in PostgreSQL
 
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4) # the stuff after default are bacailly instructions to the database to generate the uuid 4 everytime a new user is created
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4) # the stuff after default are bacailly instructions to generate the uuid 4 everytime a new user is created
     username = Column(String(50), unique=True, nullable=False) # nullable means the column cant be empty 
     email = Column(String(255), unique=True, nullable=False)
     password_hash = Column(String(255), nullable=False)

@@ -19,7 +19,7 @@ def get_db():
     db = SessionLocal()
     try: 
         yield db #tells the endpoint to use this database session
-    finally: #finally is used to close the session after the endpoint is used 
+    finally: #finally is used to close the session after the endpoint is used or crashes
         db.close() #closes the session after the endpoint is used 
 
 
